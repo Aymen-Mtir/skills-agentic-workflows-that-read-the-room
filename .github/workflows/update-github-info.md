@@ -16,6 +16,7 @@ network:
   allowed:
     - github.blog
     - github.com
+    - awesome-copilot.github.com
 safe-outputs:
   create-pull-request:
     title-prefix: '[Mona] '
@@ -33,6 +34,11 @@ Consult both official sources:
 
 - GitHub Blog: https://github.blog/latest/
 - GitHub Changelog: https://github.blog/changelog/
+- Awesome Copilot workflows: https://awesome-copilot.github.com/workflows/
+
+Fetch the Awesome Copilot workflows page and consider relevant, practical
+information from it for Mona's website. Include a source link for any factual
+update based on that page.
 
 Use the `edit` tool to update only `site/content/github-info.md`. Add relevant,
 concise, practical information that helps developers learn GitHub faster. Include
