@@ -26,6 +26,10 @@ safe-outputs:
     fallback-as-issue: false
     allowed-files:
       - site/content/github-info.md
+sandbox:
+  agent:
+    model-fallback: false
+    token-steering: false
 ---
 
 # Update Mona's GitHub Info website
