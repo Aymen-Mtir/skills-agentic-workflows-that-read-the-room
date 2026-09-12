@@ -1,7 +1,9 @@
 ---
 name: update-github-info
 description: Draft concise website updates for Mona from official GitHub sources.
-engine: copilot
+engine:
+  id: copilot
+  model: copilot/auto
 strict: true
 on:
   workflow_dispatch:
