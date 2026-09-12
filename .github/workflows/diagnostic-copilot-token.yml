@@ -1,0 +1,38 @@
+name: Diagnostic Copilot token
+
+on:
+  push:
+    branches:
+      - diagnostic-copilot-token
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Install Copilot CLI 1.0.83
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/copilot-test"
+          cd "$RUNNER_TEMP/copilot-test"
+          curl --fail --silent --show-error --location \
+            https://github.com/github/copilot-cli/releases/download/v1.0.83/copilot-linux-x64.tar.gz \
+            --output copilot.tar.gz
+          tar -xzf copilot.tar.gz
+          ./copilot --version
+
+      - name: Test Auto with existing token
+        shell: bash
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
+            echo "::error::Le secret COPILOT_GITHUB_TOKEN est absent ou vide."
+            exit 1
+          fi
+          "$RUNNER_TEMP/copilot-test/copilot" --model auto \
+            -p "Reply only OK. Do not use tools or modify files."
