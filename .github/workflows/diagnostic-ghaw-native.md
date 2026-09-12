@@ -20,8 +20,12 @@ engine:
   model: copilot/auto
   bare: true
   args:
-    - --deny-tool
-    - "*"
+    - "--deny-tool=shell"
+    - "--deny-tool=read"
+    - "--deny-tool=write"
+    - "--deny-tool=url"
+    - "--deny-tool=memory"
+    - "--deny-tool=safeoutputs"
 
 features:
   dangerously-disable-sandbox-agent: true
